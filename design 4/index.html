@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirage Estates — Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M4 28 L14 12 L20 22 L26 8 L36 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">Mirage<em>Estates</em></span>
+    </div>
+    <nav class="navlinks" aria-label="Primary">
+      <button class="navlink is-active" type="button">Buy</button>
+      <button class="navlink" type="button">Rent</button>
+      <button class="navlink" type="button">Communities</button>
+    </nav>
+    <div class="topbar-right">
+      <button class="saved-pill" id="savedPill" type="button" aria-live="polite">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20.5s-7-4.35-9.5-8.8C.7 8.1 2.4 4.5 6 4.1c2-.22 3.7.86 6 3 2.3-2.14 4-3.22 6-3 3.6.4 5.3 4 3.5 7.6C19 16.15 12 20.5 12 20.5z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span id="savedCount">0</span> saved
+      </button>
+      <button class="ghost-btn" type="button">Enquire</button>
+    </div>
+  </header>
+
+  <!-- Main split -->
+  <main class="stage">
+
+    <!-- Left: intro + filters -->
+    <section class="intro">
+      <p class="eyebrow-free-kicker">Downtown · Palm Jumeirah · Marina · Business Bay</p>
+      <h1>Own a piece of the skyline that never sleeps.</h1>
+      <p class="lead">Handpicked apartments, villas and penthouses across Dubai's most sought-after addresses — priced, verified and ready to view this week.</p>
+
+      <div class="filters">
+        <div class="filter-row pills" id="typeFilter" role="group" aria-label="Property type">
+          <button class="pill is-active" data-type="all" type="button">All homes</button>
+          <button class="pill" data-type="Apartment" type="button">Apartment</button>
+          <button class="pill" data-type="Villa" type="button">Villa</button>
+          <button class="pill" data-type="Penthouse" type="button">Penthouse</button>
+        </div>
+
+        <div class="filter-row split">
+          <label class="field">
+            <span>Area</span>
+            <select id="areaFilter">
+              <option value="all">All areas</option>
+              <option value="Downtown Dubai">Downtown Dubai</option>
+              <option value="Palm Jumeirah">Palm Jumeirah</option>
+              <option value="Dubai Marina">Dubai Marina</option>
+              <option value="Business Bay">Business Bay</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Up to <b id="priceOut">AED 20M+</b></span>
+            <input type="range" id="priceFilter" min="800000" max="20000000" step="100000" value="20000000">
+          </label>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <button class="cta" type="button">Book a private viewing</button>
+        <span class="cta-note" id="resultNote">5 homes match your search</span>
+      </div>
+
+      <dl class="stats">
+        <div><dt>480+</dt><dd>Active listings</dd></div>
+        <div><dt>AED 3.8B</dt><dd>Transacted in 2026</dd></div>
+        <div><dt>18</dt><dd>Communities covered</dd></div>
+      </dl>
+    </section>
+
+    <!-- Right: interactive property stage -->
+    <section class="gallery" aria-label="Featured property">
+      <div class="frame" id="frame">
+        <img id="imgA" class="stage-img is-top" src="" alt="">
+        <img id="imgB" class="stage-img" src="" alt="">
+
+        <button class="save-btn" id="saveBtn" type="button" aria-pressed="false" aria-label="Save this home">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 20.5s-7-4.35-9.5-8.8C.7 8.1 2.4 4.5 6 4.1c2-.22 3.7.86 6 3 2.3-2.14 4-3.22 6-3 3.6.4 5.3 4 3.5 7.6C19 16.15 12 20.5 12 20.5z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+
+        <button class="nav-arrow prev" id="prevBtn" type="button" aria-label="Previous property">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="nav-arrow next" id="nextBtn" type="button" aria-label="Next property">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <!-- <div class="empty-state" id="emptyState" hidden>
+          <p>No homes match those filters yet.</p>
+          <button id="resetFilters" type="button">Clear filters</button>
+        </div> -->
+
+        <div class="info-panel">
+          <span class="price" id="pPrice">AED 0</span>
+          <h2 id="pName">—</h2>
+          <p class="location" id="pLocation">—</p>
+          <p class="specs" id="pSpecs">—</p>
+        </div>
+
+        <div class="dots" id="dots"></div>
+
+        <div class="agent-chip">
+          <div class="agent-photo" aria-hidden="true">AR</div>
+          <div>
+            <p class="agent-name">Amara Reyes</p>
+            <p class="agent-role">Senior advisor · responds in ~10 min</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
